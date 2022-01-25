@@ -1,17 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
-import { Hero } from '../model/hero.model';
+import { Heru } from '../model/heru.model';
 import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.sass']
+  styleUrls: ['./hero-detail.component.sass'],
 })
 export class HeroDetailComponent implements OnInit {
   @Input()
-  hero?: Hero;
+  hero?: Heru;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,21 +25,16 @@ export class HeroDetailComponent implements OnInit {
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+    this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
   }
 
   save(): void {
     if (this.hero) {
-      this.heroService.updateHero(this.hero)
-        .subscribe(() => this.goBack());
+      this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
     }
   }
 
   goBack(): void {
     this.location.back();
   }
-
-
-
 }

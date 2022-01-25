@@ -7,7 +7,7 @@ import {
  } from 'rxjs/operators';
 
 import { HeroService } from '../hero.service';
-import { Hero } from '../model/hero.model';
+import { Heru } from '../model/heru.model';
 
 @Component({
   selector: 'app-hero-search',
@@ -15,7 +15,7 @@ import { Hero } from '../model/hero.model';
   styleUrls: [ './hero-search.component.sass' ]
 })
 export class HeroSearchComponent implements OnInit {
-  heroes$!: Observable<Hero[]>;
+  heroes$!: Observable<Heru[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private heroService: HeroService) {}
